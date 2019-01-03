@@ -18,6 +18,7 @@ class GildedRose
       reduce_regular_item_quality(item) unless special_quality_items.include?(item.name)
       change_aged_brie_quality(item)
       change_backstage_quality(item)
+      change_conjured_quality(item)
     end
   end
 
@@ -70,6 +71,14 @@ class GildedRose
         item.quality = item.quality + 3
       when 0
         item.quality = 0
+      end
+    end
+  end
+
+  def change_conjured_quality(item)
+    if item.name == "Conjured"
+      if sellin_positive?(item)
+        item.quality = item.quality - 2
       end
     end
   end
