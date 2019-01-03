@@ -14,29 +14,10 @@ class GildedRose
 
   def update_quality()
     @items.each do |item|
-
       update_regular_item_sellin(item) unless special_sellin_items.include?(item.name)
-
-      unless special_quality_items.include?(item.name)
-        if quality_positive?(item)
-            item.quality = item.quality - 1
-        end
-      else
-        change_aged_brie_quality(item)
-        change_backstage_quality(item)
-      end
-
-      if item.sell_in < 0
-        if item.name != "Aged Brie"
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            if quality_positive?(item)
-              if item.name != "Sulfuras, Hand of Ragnaros"
-                item.quality = item.quality - 1
-              end
-            end
-          end
-        end
-      end
+      reduce_regular_item_quality(item) unless special_quality_items.include?(item.name)
+      change_aged_brie_quality(item)
+      change_backstage_quality(item)
     end
   end
 
@@ -44,6 +25,16 @@ class GildedRose
 
   def update_regular_item_sellin(item)
       item.sell_in = item.sell_in - 1
+  end
+
+  def reduce_regular_item_quality(item)
+    if quality_positive?(item)
+      if item.sell_in >= 0
+        item.quality = item.quality - 1
+      else
+        item.quality = item.quality - 2
+      end
+    end
   end
 
   def quality_positive?(item)
