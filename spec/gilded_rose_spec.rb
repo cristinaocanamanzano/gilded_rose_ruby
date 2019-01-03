@@ -54,6 +54,14 @@ describe GildedRose do
          it "sulfura item does not have its sellin date affected" do
            expect(items[2].quality).to eq 10
          end
+
+         it "aged brie item has its quality increased instead of reduced" do
+           expect(items[3].quality).to eq 27
+         end
+
+         it "backstage item´s quality is increased by 1 when sell in date is higher than 10" do
+           expect(items[4].quality).to eq 17
+         end
        end
     end
   end
