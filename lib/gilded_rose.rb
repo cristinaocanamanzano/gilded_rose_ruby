@@ -4,6 +4,10 @@ class GildedRose
     @items = items
   end
 
+  def special_sellin_items
+    @special_sellin_items = ["Sulfuras, Hand of Ragnaros"]
+  end
+
   def update_quality()
     @items.each do |item|
 
