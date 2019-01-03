@@ -9,7 +9,7 @@ class GildedRose
   end
 
   def special_quality_items
-    @special_quality_items = ["Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert"]
+    @special_quality_items = ["Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Conjured"]
   end
 
   def update_quality()

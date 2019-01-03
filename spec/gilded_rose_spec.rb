@@ -109,6 +109,7 @@ describe GildedRose do
       expect(gilded_rose.special_quality_items).to include "Sulfuras, Hand of Ragnaros"
       expect(gilded_rose.special_quality_items).to include "Aged Brie"
       expect(gilded_rose.special_quality_items).to include "Backstage passes to a TAFKAL80ETC concert"
+      expect(gilded_rose.special_quality_items).to include "Conjured"
     end
   end
 end
