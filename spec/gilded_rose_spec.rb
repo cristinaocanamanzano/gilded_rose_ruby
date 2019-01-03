@@ -21,6 +21,17 @@ describe GildedRose do
           expect(items[0].quality).to eq 4
         end
       end
+
+      context "when update_quality has been run twice" do
+        it "reduces quality by 2 when sell in date is negative" do
+          gilded_rose.update_quality
+          expect(items[1].quality).to eq 0
+        end
+
+        it "reduces sell in date by 1 also after 0" do
+          expect(items[1].sell_in).to eq -1
+        end
+      end
     end
   end
 
