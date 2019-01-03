@@ -79,6 +79,17 @@ describe GildedRose do
            expect(items[4].quality).to eq 35
          end
        end
+
+       context "when update_quality has been run more than 50 times" do
+        it "quality never gets higher than 50" do
+          50.times { gilded_rose.update_quality }
+          expect(items[3].quality).to eq 50
+        end
+
+        it "backstage item´s quality is reduced to 0 after sell in date passes" do
+          expect(items[4].quality).to eq 0
+        end
+      end
     end
   end
 end
