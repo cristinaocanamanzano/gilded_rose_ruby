@@ -35,10 +35,6 @@ class GildedRose
               end
             end
           end
-        else
-          if quality_lower_than_50?(item)
-            increase_quality_by_1(item)
-          end
         end
       end
     end
