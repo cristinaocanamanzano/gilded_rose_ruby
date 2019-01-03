@@ -63,6 +63,22 @@ describe GildedRose do
            expect(items[4].quality).to eq 17
          end
        end
+
+       context "when update_quality has been run 16 times" do
+         it "backstage item´s quality is increased by 2 when sell in date is between 6 and 10" do
+           4.times { gilded_rose.update_quality }
+           expect(items[4].sell_in).to eq 9
+           expect(items[4].quality).to eq 23
+         end
+       end
+
+       context "when update_quality has been run 21 times" do
+         it "backstage item´s quality is increased by 3 when sell in date is between 6 and 10" do
+           5.times { gilded_rose.update_quality }
+           expect(items[4].sell_in).to eq 4
+           expect(items[4].quality).to eq 35
+         end
+       end
     end
   end
 end
