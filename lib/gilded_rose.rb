@@ -28,14 +28,10 @@ class GildedRose
           increase_quality_by_1(item)
           if item.name == "Backstage passes to a TAFKAL80ETC concert"
             if item.sell_in < 11
-              if quality_lower_than_50?(item)
                 increase_quality_by_1(item)
-              end
             end
             if item.sell_in < 6
-              if quality_lower_than_50?(item)
-                increase_quality_by_1(item)
-              end
+              increase_quality_by_1(item)
             end
           end
         end
@@ -77,6 +73,12 @@ class GildedRose
 
   def increase_quality_by_1(item)
     item.quality = item.quality + 1
+  end
+
+  def change_aged_brie_quality(item)
+    if item.name == "Aged Brie" && quality_lower_than_50?(item)
+      item.quality = item.quality + 1
+    end
   end
 end
 
