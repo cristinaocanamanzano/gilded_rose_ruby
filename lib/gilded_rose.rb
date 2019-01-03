@@ -22,17 +22,8 @@ class GildedRose
             item.quality = item.quality - 1
         end
       else
-        if quality_lower_than_50?(item) && item.name != "Sulfuras, Hand of Ragnaros"
-          increase_quality_by_1(item)
-          if item.name == "Backstage passes to a TAFKAL80ETC concert"
-            if item.sell_in < 11
-                increase_quality_by_1(item)
-            end
-            if item.sell_in < 6
-              increase_quality_by_1(item)
-            end
-          end
-        end
+        change_aged_brie_quality(item)
+        change_backstage_quality(item)
       end
 
       if item.sell_in < 0
@@ -43,8 +34,6 @@ class GildedRose
                 item.quality = item.quality - 1
               end
             end
-          else
-            item.quality = item.quality - item.quality
           end
         else
           if quality_lower_than_50?(item)
@@ -76,6 +65,21 @@ class GildedRose
   def change_aged_brie_quality(item)
     if item.name == "Aged Brie" && quality_lower_than_50?(item)
       item.quality = item.quality + 1
+    end
+  end
+
+  def change_backstage_quality(item)
+    if item.name == "Backstage passes to a TAFKAL80ETC concert" && quality_lower_than_50?(item)
+      case item.sell_in
+      when 11 .. (1.0/0.0)
+        item.quality = item.quality + 1
+      when 6 .. 10
+        item.quality = item.quality + 2
+      when 1 .. 5
+        item.quality = item.quality + 3
+      when 0
+        item.quality = 0
+      end
     end
   end
 end
