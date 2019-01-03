@@ -9,7 +9,7 @@ class GildedRose
   end
 
   def special_quality_items
-    @special_quality_items = ["Sulfuras, Hand of Ragnaros"]
+    @special_quality_items = ["Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert"]
   end
 
   def update_quality()
@@ -17,14 +17,12 @@ class GildedRose
 
       update_regular_item_sellin(item) unless special_sellin_items.include?(item.name)
 
-      if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
+      unless special_quality_items.include?(item.name)
         if quality_positive?(item)
-          if item.name != "Sulfuras, Hand of Ragnaros"
             item.quality = item.quality - 1
-          end
         end
       else
-        if quality_lower_than_50?(item)
+        if quality_lower_than_50?(item) && item.name != "Sulfuras, Hand of Ragnaros"
           increase_quality_by_1(item)
           if item.name == "Backstage passes to a TAFKAL80ETC concert"
             if item.sell_in < 11
