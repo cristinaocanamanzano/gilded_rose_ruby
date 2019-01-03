@@ -29,12 +29,16 @@ class GildedRose
 
   def reduce_regular_item_quality(item)
     if quality_positive?(item)
-      if item.sell_in >= 0
+      if sellin_positive?(item)
         item.quality = item.quality - 1
       else
         item.quality = item.quality - 2
       end
     end
+  end
+
+  def sellin_positive?(item)
+    item.sell_in >= 0
   end
 
   def quality_positive?(item)
