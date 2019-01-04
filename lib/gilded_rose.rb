@@ -16,9 +16,7 @@ class GildedRose
     @items.each do |item|
       update_regular_item_sellin(item) unless special_sellin_items.include?(item.name)
       reduce_regular_item_quality(item) unless special_quality_items.include?(item.name)
-      change_aged_brie_quality(item)
-      change_backstage_quality(item)
-      change_conjured_quality(item)
+      change_special_items(item)
     end
   end
 
@@ -87,6 +85,12 @@ class GildedRose
         item.quality = item.quality - 4
       end
     end
+  end
+
+  def change_special_items(item)
+    change_aged_brie_quality(item)
+    change_backstage_quality(item)
+    change_conjured_quality(item)
   end
 end
 
