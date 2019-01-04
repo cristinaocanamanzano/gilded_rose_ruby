@@ -32,8 +32,10 @@ class GildedRose
     if quality_positive?(item)
       if sellin_positive?(item)
         item.quality = item.quality - 1
-      else
+      elsif item.quality >= 2
         item.quality = item.quality - 2
+      else
+        item.quality = 0
       end
     end
   end
