@@ -79,8 +79,10 @@ class GildedRose
     if item.name == "Conjured"
       if item.quality < 2
         item.quality = 0
-      elsif item.quality >= 2
+      elsif item.quality >= 2 && sellin_positive?(item)
         item.quality = item.quality - 2
+      else
+        item.quality = item.quality - 4
       end
     end
   end

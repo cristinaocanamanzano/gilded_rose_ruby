@@ -6,7 +6,7 @@ describe GildedRose do
   sulfura = Item.new("Sulfuras, Hand of Ragnaros", 10, 10)
   brie = Item.new("Aged Brie", 10, 15)
   backstage= Item.new("Backstage passes to a TAFKAL80ETC concert", 25, 5)
-  conjured = Item.new("Conjured", 15, 25)
+  conjured = Item.new("Conjured", 15, 45)
   items = [regular_item_1, regular_item_2, sulfura, brie, backstage, conjured]
 
   subject(:gilded_rose) { described_class.new(items)}
@@ -64,7 +64,7 @@ describe GildedRose do
          end
 
          it "conjured item´s quality is reduced by 2 instead of 1 when sell in date is positive" do
-           expect(items[5].quality).to eq 1
+           expect(items[5].quality).to eq 21
          end
        end
 
@@ -73,6 +73,10 @@ describe GildedRose do
            4.times { gilded_rose.update_quality }
            expect(items[4].sell_in).to eq 9
            expect(items[4].quality).to eq 23
+         end
+
+         it "conjured item's quality is reduced by 4 instead of 2 when sell in date is negative" do
+           expect(items[5].quality).to eq 11
          end
        end
 
