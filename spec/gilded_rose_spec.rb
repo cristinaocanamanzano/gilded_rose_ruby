@@ -93,6 +93,10 @@ describe GildedRose do
         it "backstage item´s quality is reduced to 0 after sell in date passes" do
           expect(items[4].quality).to eq 0
         end
+
+        it "conjured item's quality does not get lower than 0" do
+          expect(items[5].quality).to eq 0
+        end
       end
     end
   end

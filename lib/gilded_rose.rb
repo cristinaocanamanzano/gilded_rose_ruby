@@ -77,7 +77,9 @@ class GildedRose
 
   def change_conjured_quality(item)
     if item.name == "Conjured"
-      if sellin_positive?(item)
+      if item.quality < 2
+        item.quality = 0
+      elsif item.quality >= 2
         item.quality = item.quality - 2
       end
     end
