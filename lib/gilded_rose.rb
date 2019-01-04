@@ -50,10 +50,6 @@ class GildedRose
     item.quality < 50
   end
 
-  def increase_quality_by_1(item)
-    item.quality = item.quality + 1
-  end
-
   def change_aged_brie_quality(item)
     if item.name == "Aged Brie" && quality_lower_than_50?(item)
       item.quality = item.quality + 1
