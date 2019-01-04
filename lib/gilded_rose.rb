@@ -39,7 +39,7 @@ class GildedRose
   end
 
   def sellin_positive?(item)
-    item.sell_in >= 0
+    item.sell_in > 0
   end
 
   def quality_positive?(item)

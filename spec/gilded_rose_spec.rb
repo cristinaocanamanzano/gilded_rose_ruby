@@ -76,7 +76,7 @@ describe GildedRose do
          end
 
          it "conjured item's quality is reduced by 4 instead of 2 when sell in date is negative" do
-           expect(items[5].quality).to eq 11
+           expect(items[5].quality).to eq 9
          end
        end
 
