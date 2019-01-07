@@ -5,7 +5,7 @@ class GildedRose
   end
 
   def special_quality_items
-    @special_quality_items = ["Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Conjured"]
+    @special_quality_items = ["Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Conjured"]
   end
 
   def update_quality()
@@ -17,18 +17,6 @@ class GildedRose
   end
 
   private
-
-  # def reduce_regular_item_quality(item)
-  #   if quality_positive?(item)
-  #     if sellin_positive?(item)
-  #       item.quality = item.quality - 1
-  #     elsif item.quality >= 2
-  #       item.quality = item.quality - 2
-  #     else
-  #       item.quality = 0
-  #     end
-  #   end
-  # end
 
   def sellin_positive?(item)
     item.sell_in > 0
@@ -125,5 +113,9 @@ end
 class Sulfura < Item
   def update_sell_in
       @sell_in = @sell_in
+  end
+
+  def update_quality
+    @quality = quality
   end
 end
