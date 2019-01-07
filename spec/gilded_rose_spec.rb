@@ -105,17 +105,6 @@ describe GildedRose do
     end
   end
 
-  # describe "#special_sellin_items" do
-  #   it "includes sulfure item" do
-  #     expect(gilded_rose.special_sellin_items).to include "Sulfuras, Hand of Ragnaros"
-  #   end
-  #
-  #   it "does not included other items such as aged brie or backstage" do
-  #     expect(gilded_rose.special_sellin_items).not_to include "Aged Brie"
-  #     expect(gilded_rose.special_sellin_items).not_to include "Backstage passes to a TAFKAL80ETC concert"
-  #   end
-  # end
-
   describe "#special_quality_items" do
     it "includes sulfure item" do
       expect(gilded_rose.special_quality_items).to include "Sulfuras, Hand of Ragnaros"
