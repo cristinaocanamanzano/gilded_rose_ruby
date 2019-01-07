@@ -11,28 +11,24 @@ class GildedRose
   def update_quality()
     @items.each do |item|
       item.update_sell_in
-      reduce_regular_item_quality(item) unless special_quality_items.include?(item.name)
+      item.update_quality unless special_quality_items.include?(item.name)
       change_special_items(item)
     end
   end
 
   private
 
-  def update_regular_item_sellin(item)
-      item.sell_in = item.sell_in - 1
-  end
-
-  def reduce_regular_item_quality(item)
-    if quality_positive?(item)
-      if sellin_positive?(item)
-        item.quality = item.quality - 1
-      elsif item.quality >= 2
-        item.quality = item.quality - 2
-      else
-        item.quality = 0
-      end
-    end
-  end
+  # def reduce_regular_item_quality(item)
+  #   if quality_positive?(item)
+  #     if sellin_positive?(item)
+  #       item.quality = item.quality - 1
+  #     elsif item.quality >= 2
+  #       item.quality = item.quality - 2
+  #     else
+  #       item.quality = 0
+  #     end
+  #   end
+  # end
 
   def sellin_positive?(item)
     item.sell_in > 0
@@ -101,6 +97,28 @@ class Item
 
   def update_sell_in
       @sell_in -= 1
+  end
+
+  def update_quality
+    if quality_positive?
+      if sellin_positive?
+        @quality -= 1
+      elsif @quality >= 2
+        @quality -= 2
+      else
+        @quality = 0
+      end
+    end
+  end
+
+  private
+
+  def sellin_positive?
+    @sell_in > 0
+  end
+
+  def quality_positive?
+    @quality > 0
   end
 end
 
