@@ -4,46 +4,11 @@ class GildedRose
     @items = items
   end
 
-  def special_quality_items
-    @special_quality_items = ["Conjured"]
-  end
-
   def update_quality()
     @items.each do |item|
       item.update_sell_in
-      item.update_quality unless special_quality_items.include?(item.name)
-      change_special_items(item)
+      item.update_quality
     end
-  end
-
-  private
-
-  def sellin_positive?(item)
-    item.sell_in > 0
-  end
-
-  def quality_positive?(item)
-    item.quality > 0
-  end
-
-  def quality_lower_than_50?(item)
-    item.quality < 50
-  end
-
-  def change_conjured_quality(item)
-    if item.name == "Conjured"
-      if item.quality < 2
-        item.quality = 0
-      elsif item.quality >= 2 && sellin_positive?(item)
-        item.quality = item.quality - 2
-      else
-        item.quality = item.quality - 4
-      end
-    end
-  end
-
-  def change_special_items(item)
-    change_conjured_quality(item)
   end
 end
 
@@ -112,14 +77,27 @@ class Backstage < Item
     if quality_lower_than_50?
       case @sell_in
       when 11 .. (1.0/0.0)
-        @quality = @quality += 1
+        @quality += 1
       when 6 .. 10
-        @quality = @quality += 2
+        @quality += 2
       when 1 .. 5
-        @quality = @quality += 3
+        @quality += 3
       when 0
         @quality = 0
       end
+    end
+  end
+end
+
+
+class Conjured < Item
+  def update_quality
+    if @quality < 2
+      @quality = 0
+    elsif @quality >= 2 && sellin_positive?
+      @quality -= 2
+    else
+      @quality -= 4
     end
   end
 end

@@ -6,7 +6,7 @@ describe GildedRose do
   sulfura = Sulfura.new("Sulfuras, Hand of Ragnaros", 10, 10)
   brie = AgedBrie.new("Aged Brie", 10, 15)
   backstage= Backstage.new("Backstage passes to a TAFKAL80ETC concert", 25, 5)
-  conjured = Item.new("Conjured", 15, 45)
+  conjured = Conjured.new("Conjured", 15, 45)
   items = [regular_item_1, regular_item_2, sulfura, brie, backstage, conjured]
 
   subject(:gilded_rose) { described_class.new(items)}
@@ -102,12 +102,6 @@ describe GildedRose do
           expect(items[5].quality).to eq 0
         end
       end
-    end
-  end
-
-  describe "#special_quality_items" do
-    it "includes sulfure item" do
-      expect(gilded_rose.special_quality_items).to include "Conjured"
     end
   end
 end
