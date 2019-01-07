@@ -54,6 +54,10 @@ class Item
   def quality_lower_than_50?
     @quality < 50
   end
+
+  def quality_equal_or_higher_than_2?
+    @quality >= 2
+  end
 end
 
 class Sulfura < Item
@@ -89,12 +93,11 @@ class Backstage < Item
   end
 end
 
-
 class Conjured < Item
   def update_quality
     if @quality < 2
       @quality = 0
-    elsif @quality >= 2 && sellin_positive?
+    elsif quality_equal_or_higher_than_2? && sellin_positive?
       @quality -= 2
     else
       @quality -= 4
