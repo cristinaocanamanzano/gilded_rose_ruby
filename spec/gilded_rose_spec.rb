@@ -5,7 +5,7 @@ describe GildedRose do
   regular_item_2 = Item.new("item_2", 1, 3)
   sulfura = Sulfura.new("Sulfuras, Hand of Ragnaros", 10, 10)
   brie = AgedBrie.new("Aged Brie", 10, 15)
-  backstage= Item.new("Backstage passes to a TAFKAL80ETC concert", 25, 5)
+  backstage= Backstage.new("Backstage passes to a TAFKAL80ETC concert", 25, 5)
   conjured = Item.new("Conjured", 15, 45)
   items = [regular_item_1, regular_item_2, sulfura, brie, backstage, conjured]
 
@@ -107,7 +107,6 @@ describe GildedRose do
 
   describe "#special_quality_items" do
     it "includes sulfure item" do
-      expect(gilded_rose.special_quality_items).to include "Backstage passes to a TAFKAL80ETC concert"
       expect(gilded_rose.special_quality_items).to include "Conjured"
     end
   end
