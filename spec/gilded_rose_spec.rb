@@ -3,7 +3,7 @@ require 'gilded_rose'
 describe GildedRose do
   regular_item_1 = Item.new("item_1", 3, 5)
   regular_item_2 = Item.new("item_2", 1, 3)
-  sulfura = Item.new("Sulfuras, Hand of Ragnaros", 10, 10)
+  sulfura = Sulfura.new("Sulfuras, Hand of Ragnaros", 10, 10)
   brie = Item.new("Aged Brie", 10, 15)
   backstage= Item.new("Backstage passes to a TAFKAL80ETC concert", 25, 5)
   conjured = Item.new("Conjured", 15, 45)
@@ -105,16 +105,16 @@ describe GildedRose do
     end
   end
 
-  describe "#special_sellin_items" do
-    it "includes sulfure item" do
-      expect(gilded_rose.special_sellin_items).to include "Sulfuras, Hand of Ragnaros"
-    end
-
-    it "does not included other items such as aged brie or backstage" do
-      expect(gilded_rose.special_sellin_items).not_to include "Aged Brie"
-      expect(gilded_rose.special_sellin_items).not_to include "Backstage passes to a TAFKAL80ETC concert"
-    end
-  end
+  # describe "#special_sellin_items" do
+  #   it "includes sulfure item" do
+  #     expect(gilded_rose.special_sellin_items).to include "Sulfuras, Hand of Ragnaros"
+  #   end
+  #
+  #   it "does not included other items such as aged brie or backstage" do
+  #     expect(gilded_rose.special_sellin_items).not_to include "Aged Brie"
+  #     expect(gilded_rose.special_sellin_items).not_to include "Backstage passes to a TAFKAL80ETC concert"
+  #   end
+  # end
 
   describe "#special_quality_items" do
     it "includes sulfure item" do

@@ -4,17 +4,13 @@ class GildedRose
     @items = items
   end
 
-  def special_sellin_items
-    @special_sellin_items = ["Sulfuras, Hand of Ragnaros"]
-  end
-
   def special_quality_items
     @special_quality_items = ["Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Conjured"]
   end
 
   def update_quality()
     @items.each do |item|
-      item.update_sell_in unless special_sellin_items.include?(item.name)
+      item.update_sell_in
       reduce_regular_item_quality(item) unless special_quality_items.include?(item.name)
       change_special_items(item)
     end
@@ -105,5 +101,11 @@ class Item
 
   def update_sell_in
       @sell_in -= 1
+  end
+end
+
+class Sulfura < Item
+  def update_sell_in
+      @sell_in = @sell_in
   end
 end
