@@ -5,7 +5,7 @@ class GildedRose
   end
 
   def special_quality_items
-    @special_quality_items = ["Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Conjured"]
+    @special_quality_items = ["Backstage passes to a TAFKAL80ETC concert", "Conjured"]
   end
 
   def update_quality()
@@ -28,12 +28,6 @@ class GildedRose
 
   def quality_lower_than_50?(item)
     item.quality < 50
-  end
-
-  def change_aged_brie_quality(item)
-    if item.name == "Aged Brie" && quality_lower_than_50?(item)
-      item.quality = item.quality + 1
-    end
   end
 
   def change_backstage_quality(item)
@@ -64,7 +58,6 @@ class GildedRose
   end
 
   def change_special_items(item)
-    change_aged_brie_quality(item)
     change_backstage_quality(item)
     change_conjured_quality(item)
   end
@@ -108,14 +101,24 @@ class Item
   def quality_positive?
     @quality > 0
   end
+
+  def quality_lower_than_50?
+    @quality < 50
+  end
 end
 
 class Sulfura < Item
   def update_sell_in
-      @sell_in = @sell_in
+    @sell_in = @sell_in
   end
 
   def update_quality
-    @quality = quality
+    @quality = @quality
+  end
+end
+
+class AgedBrie < Item
+  def update_quality
+    if quality_lower_than_50? then @quality += 1 end
   end
 end
