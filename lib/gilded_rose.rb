@@ -14,7 +14,7 @@ class GildedRose
 
   def update_quality()
     @items.each do |item|
-      update_regular_item_sellin(item) unless special_sellin_items.include?(item.name)
+      item.update_sell_in unless special_sellin_items.include?(item.name)
       reduce_regular_item_quality(item) unless special_quality_items.include?(item.name)
       change_special_items(item)
     end
@@ -101,5 +101,9 @@ class Item
 
   def to_s()
     "#{@name}, #{@sell_in}, #{@quality}"
+  end
+
+  def update_sell_in
+      @sell_in -= 1
   end
 end
