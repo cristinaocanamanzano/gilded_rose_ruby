@@ -22,9 +22,3 @@ How to run the tests
 1. Download this repository and open it in the command line
 2. Run 'bundle' to install the RSpec gem
 3. Run 'rspec'
-
-What would be next?
--------
-Next implementations would be:
-- Improve the change_backstage_quality method so that the quality of the item cannot get higher than 50
-- Add new methods so that new items can be added to @items, @special_sellin_items and @special_quality_items after initializing a GildedRose object.
